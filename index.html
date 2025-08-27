@@ -7,12 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --grad-1: linear-gradient(135deg, #4f46e5, #3b82f6, #06b6d4);
-      --grad-2: linear-gradient(135deg, #f43f5e, #f59e0b, #84cc16);
-      --ink: #0b1020;
-      --card: #0f172a;
-      --muted: #9ca3af;
-      --accent: #facc15;
+      --primary-color: #0b1020;
+      --secondary-color: #111827;
+      --accent-color: #facc15;
+      --text-color: #fff;
+      --muted-text: #9ca3af;
+      --cta-grad-1: linear-gradient(135deg, #4f46e5, #3b82f6);
+      --cta-grad-2: linear-gradient(135deg, #22c55e, #16a34a);
+      --card-bg: rgba(15, 23, 42, 0.9);
+      --highlight-bg: linear-gradient(135deg, #1e3a8a, #0ea5e9);
     }
     * {
       box-sizing: border-box;
@@ -21,131 +24,131 @@
       margin: 0;
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
-      background: linear-gradient(135deg, #0b1020, #111827 50%, #0b1020);
-      color: #fff;
+      background: var(--primary-color);
+      color: var(--text-color);
     }
     header {
       position: relative;
       overflow: hidden;
       text-align: center;
-      padding: 64px 20px 36px;
-      background: var(--grad-1);
+      padding: 6rem 1.25rem 2.25rem;
+      background: var(--cta-grad-1);
     }
     header::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1508385082359-fd3a7a1a7a3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1621376045761-001a1c3132e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       opacity: 0.18;
       z-index: 0;
       pointer-events: none;
     }
-    header h1,
-    header p,
-    .cta-row,
-    .hero-wrap {
+    header h1, header p, .cta-row, .hero-wrap {
       position: relative;
       z-index: 1;
     }
     header h1 {
-      font-size: 2.6rem;
+      font-size: clamp(2rem, 5vw, 2.6rem);
       font-weight: 800;
-      margin: 0 0 12px;
+      margin: 0 0 0.75rem;
     }
     header p {
-      font-size: 1.12rem;
-      max-width: 900px;
-      margin: 0 auto 18px;
+      font-size: clamp(1rem, 2vw, 1.12rem);
+      max-width: 56rem;
+      margin: 0 auto 1.125rem;
     }
     .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 0.75rem;
       justify-content: center;
+      margin-bottom: 1.25rem;
     }
     .cta-btn {
       display: inline-block;
-      padding: 14px 24px;
+      padding: 0.875rem 1.5rem;
       font-size: 1.02rem;
       font-weight: 800;
-      color: #fff;
-      background: var(--grad-1);
-      border-radius: 12px;
+      color: var(--text-color);
+      background: var(--cta-grad-1);
+      border-radius: 0.75rem;
       transition: 0.25s;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.25);
       text-decoration: none;
     }
     .cta-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-0.125rem);
       filter: saturate(1.08);
     }
     .cta-btn.alt {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
+      background: var(--cta-grad-2);
     }
     .hero-wrap {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 18px;
     }
     .hero-link {
       display: block;
+      transition: transform 0.25s ease;
+    }
+    .hero-link:hover {
+      transform: translateY(-0.25rem);
     }
     .hero-card {
       position: relative;
       width: 100%;
-      max-width: 720px;
-      border-radius: 16px;
+      max-width: 45rem;
+      border-radius: 1rem;
       overflow: hidden;
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
-    }
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1508385082359-fd3a7a1a7a3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      opacity: 0.22;
-      pointer-events: none;
+      box-shadow: 0 0.875rem 2.25rem rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(10px);
     }
     .hero-panel {
       position: relative;
-      margin: 22px;
-      border-radius: 14px;
+      margin: 1.375rem;
+      border-radius: 0.875rem;
       background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-      padding: 34px;
+      padding: 2.125rem;
+      box-shadow: 0 0 2rem 0.5rem rgba(14, 165, 233, 0.4);
     }
     .hero-title {
-      font-size: 2.1rem;
+      font-size: clamp(1.8rem, 4vw, 2.1rem);
       font-weight: 800;
       letter-spacing: 0.3px;
     }
     section {
-      padding: 56px 20px;
-      max-width: 1100px;
+      padding: 3.5rem 1.25rem;
+      max-width: 68.75rem;
       margin: 0 auto;
     }
     h2 {
-      font-size: 2rem;
-      margin: 0 0 14px;
-      color: #facc15;
+      font-size: clamp(1.7rem, 4vw, 2rem);
+      margin: 0 0 0.875rem;
+      color: var(--accent-color);
+      text-align: center;
     }
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+      gap: 1rem;
     }
     .feature-box {
-      background: rgba(15, 23, 42, 0.9);
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+      background: var(--card-bg);
+      padding: 1.25rem;
+      border-radius: 0.875rem;
+      box-shadow: 0 0.5rem 1.125rem rgba(0, 0, 0, 0.35);
+      text-align: center;
     }
     .highlight {
-      background: linear-gradient(135deg, #1e3a8a, #0ea5e9 70%);
-      padding: 28px;
-      border-radius: 16px;
-      margin: 22px 0;
+      background: var(--highlight-bg);
+      padding: 1.75rem;
+      border-radius: 1rem;
+      margin: 1.375rem auto;
       text-align: center;
+      max-width: 45rem;
     }
     ul {
       list-style: none;
@@ -153,9 +156,10 @@
       margin: 0;
     }
     ul li {
-      margin: 10px 0;
-      padding-left: 30px;
+      margin: 0.625rem 0;
+      padding-left: 1.875rem;
       position: relative;
+      text-align: left;
     }
     ul li::before {
       content: '✔';
@@ -167,57 +171,67 @@
     .trust {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 16px;
+      gap: 0.875rem;
+      margin-top: 1rem;
+      justify-content: center;
     }
     .trust-card {
-      background: #0f172a;
-      border-radius: 14px;
-      padding: 14px 16px;
+      background: var(--card-bg);
+      border-radius: 0.875rem;
+      padding: 0.875rem 1rem;
       flex: 1;
-      min-width: 220px;
+      min-width: 13.75rem;
+      text-align: center;
     }
     footer {
-      background: #111827;
+      background: var(--secondary-color);
       text-align: center;
-      padding: 28px 20px;
-      color: #9ca3af;
+      padding: 1.75rem 1.25rem;
+      color: var(--muted-text);
     }
     .sticky-cta {
       position: fixed;
       left: 50%;
       transform: translateX(-50%);
-      bottom: 16px;
-      background: var(--grad-2);
-      color: #0b1020;
-      padding: 10px 14px;
+      bottom: 1rem;
+      background: var(--cta-grad-2);
+      color: var(--primary-color);
+      padding: 0.625rem 0.875rem;
       border-radius: 999px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.35);
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
       align-items: center;
       justify-content: center;
+      font-size: 0.9rem;
     }
     .sticky-cta a {
-      background: #0b1020;
-      color: #fef08a;
-      padding: 10px 16px;
+      background: var(--primary-color);
+      color: var(--accent-color);
+      padding: 0.625rem 1rem;
       border-radius: 999px;
       font-weight: 800;
       text-decoration: none;
+      transition: transform 0.25s;
+    }
+    .sticky-cta a:hover {
+      transform: scale(1.05);
+    }
+    .cta-button-wrapper {
+        text-align: center;
+        margin-top: 1rem;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>The EURUSD Day Trading Course: Your Shortcut to Financial Freedom</h1>
-    <p>🚀 Imagine a life where you control your income, your time, and your future. The market isn't a mystery—it's your Code Playground!</p>
-
+    <p>🚀 Imagine a life where you control your income, your time, and your future. The market isn't a mystery—it's your playground!</p>
+  
     <div class="cta-row">
       <a href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" class="cta-btn" target="_blank" rel="noopener nofollow" aria-label="Start your journey via affiliate link">Start Your Journey Today</a>
-      <a href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" class="cta-btn alt" target="_blank" rel="noopener nofollow" aria-label="Take control of your future via affiliate link">Take Control of Your Future</a>
     </div>
-
+  
     <div class="hero-wrap">
       <a class="hero-link" href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" target="_blank" rel="noopener nofollow" aria-label="Hero card link to enroll">
         <div class="hero-card">
@@ -228,7 +242,7 @@
       </a>
     </div>
   </header>
-
+  
   <section>
     <h2>Why Is This Course So Revolutionary?</h2>
     <div class="features">
@@ -239,7 +253,7 @@
       <div class="feature-box"><h3>🛡 Risk Management</h3><p>Protect your capital and trade with confidence.</p></div>
       <div class="feature-box"><h3>🎯 Focus</h3><p>Specialized on EURUSD for faster mastery.</p></div>
     </div>
-
+  
     <div class="highlight">
       <h2>Beyond the Strategy: A Mindset for Success</h2>
       <ul>
@@ -252,7 +266,7 @@
       </div>
     </div>
   </section>
-
+  
   <section>
     <h2>Here’s What You Get</h2>
     <ul>
@@ -260,28 +274,29 @@
       <li>Real-World Trade Examples that show theory in action.</li>
       <li><strong>Lifetime Access</strong> to all course materials and updates.</li>
     </ul>
-    <p style="margin-top:14px;font-size:1.02rem; color:#e5e7eb;">Ready to stop dreaming and start doing?</p>
     <div class="cta-row">
       <a href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" class="cta-btn alt" target="_blank" rel="noopener nofollow">Take Control of Your Future</a>
     </div>
-
+  
     <div class="trust">
       <div class="trust-card"><strong>Lifetime Access</strong> — All updates included</div>
       <div class="trust-card"><strong>Beginner-Friendly</strong> — Step-by-step lessons</div>
     </div>
   </section>
-
+  
   <section class="highlight">
-  <h2>The Only Forex Course You Will Need!</h2>
-  <p>This course is incredibly beginner-friendly, breaking down complex concepts into simple steps.</p>
-  <a href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" class="cta-btn center-cta-link" target="_blank" rel="noopener nofollow">Get Started Now!</a>
-</section>
-
+    <h2>The Only Forex Course You Will Need!</h2>
+    <p>This course is incredibly beginner-friendly, breaking down complex concepts into simple steps.</p>
+    <div class="cta-button-wrapper"> 
+      <a href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" class="cta-btn" target="_blank" rel="noopener nofollow">Get Started Now!</a>
+    </div>
+  </section>
+  
   <footer>
     <p>© 2025 The EURUSD Day Trading Course</p>
     <p><a href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" target="_blank" rel="noopener nofollow" style="color:#facc15;">Affiliate Link</a></p>
   </footer>
-
+  
   <div class="sticky-cta" role="region" aria-label="Sticky enroll bar">
     <span>Ready to trade smarter? Enroll Now!</span>
     <a href="https://tradethatswing.com/product/the-eurusd-day-trading-course/?ref=Homepage" target="_blank" rel="noopener nofollow">Enroll</a>
